@@ -10,15 +10,15 @@ source:
   sha256: 3e2f5826578e683999b93716285b3b1f344f157bf75fa9ce0a797564e742f062
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
   number: 1
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - hatchling
+    - wheel
   run:
     - python >=3.6
     - traitlets >=5.3
