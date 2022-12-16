@@ -40,7 +40,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  doc_url: https://github.com/ipython/comm
+  doc_url: https://github.com/ipython/comm/blob/main/README.md
   dev_url: https://github.com/ipython/comm
 
 extra:
