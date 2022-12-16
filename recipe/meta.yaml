@@ -10,17 +10,18 @@ source:
   sha256: 3e2f5826578e683999b93716285b3b1f344f157bf75fa9ce0a797564e742f062
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
+  skip: true  # [py<36]
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - hatchling
+    - wheel
   run:
-    - python >=3.6
+    - python
     - traitlets >=5.3
 
 test:
@@ -39,7 +40,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  doc_url: https://github.com/ipython/comm
+  doc_url: https://github.com/ipython/comm/blob/main/README.md
   dev_url: https://github.com/ipython/comm
 
 extra:
