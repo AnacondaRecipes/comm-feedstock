@@ -1,5 +1,5 @@
 {% set name = "comm" %}
-{% set version = "0.1.2" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,22 +7,21 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3e2f5826578e683999b93716285b3b1f344f157bf75fa9ce0a797564e742f062
+  sha256: 0bc91edae1344d39d3661dcbc36937181fdaddb304790458f8b044dbc064b89a
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  skip: true  # [py<36]
+  skip: true  # [py<38]
 
 requirements:
   host:
     - python
     - pip
-    - hatchling
-    - wheel
+    - hatchling >=1.10
   run:
     - python
-    - traitlets >=5.3
+    - traitlets >=4
 
 test:
   imports:
