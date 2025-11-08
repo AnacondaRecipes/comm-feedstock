@@ -1,13 +1,13 @@
 {% set name = "comm" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0bc91edae1344d39d3661dcbc36937181fdaddb304790458f8b044dbc064b89a
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 2dc8048c10962d55d7ad693be1e7045d891b7ce8d999c97963a5e3e99c055971
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
