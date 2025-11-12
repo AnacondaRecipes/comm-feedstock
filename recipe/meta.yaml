@@ -1,36 +1,39 @@
 {% set name = "comm" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.3" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0bc91edae1344d39d3661dcbc36937181fdaddb304790458f8b044dbc064b89a
+  url: https://github.com/ipython/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 6db2cd1b5ab7ff52c6fe8df473d5518b29fe5f0e5ec267fc731272a71e46a5ea
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<38]
 
 requirements:
   host:
-    - python
     - pip
+    - python
     - hatchling >=1.10
   run:
     - python
-    - traitlets >=4
 
 test:
+  source_files:
+    - tests
   imports:
     - comm
     - comm.base_comm
-  requires:
-    - pip
   commands:
     - pip check
+    - pytest -v tests
+  requires:
+    - pip
+    - pytest
 
 about:
   home: https://github.com/ipython/comm
